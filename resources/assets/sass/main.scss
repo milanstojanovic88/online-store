@@ -1,0 +1,16 @@
+// main.scss
+
+@import 'mixins/mixins';
+@import 'variables/global-variables';
+@import 'fonts/fonts';
+
+body {
+  font-family: Sansation-Regular;
+}
+
+@import 'global-parts/buttons';
+@import 'global-parts/navbars';
+@import 'global-parts/boxes';
+
+@import 'pages/home-page';
+

@@ -1,0 +1,17 @@
+// boxes.scss
+
+.info-block {
+  padding: 30px 26px;
+  font-size: 1.5em;
+  line-height: 200%;
+  font-family: bebas-neue-regular;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  color: $color-dark-gray;
+  margin-bottom: 35px;
+}
+
+.info-block-bordered {
+  border: solid 4px $color-light-gray;
+  border-radius: 20px;
+}

@@ -1,0 +1,31 @@
+// splash-screen.scss
+
+@import 'mixins/mixins';
+@import 'variables/global-variables';
+
+.splash-screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: $color-purple;
+  z-index: 100000;
+}
+
+.splash-screen-content {
+  position: relative;
+  top: 50%;
+  @include prefix(transform, translateY(-50%), $prefixes);
+}
+
+.splash-screen-tagline {
+  font: {
+    size: 32px;
+    weight: 700;
+  }
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+

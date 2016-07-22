@@ -1,0 +1,47 @@
+.btn {
+  @include prefix(outline, none !important, $prefixes);
+
+  &:hover {
+    @include prefix(outline, none !important, $prefixes);
+  }
+
+  &:focus {
+    @include prefix(outline, none !important, $prefixes);
+  }
+
+  &:active {
+    @include prefix(outline, none !important, $prefixes);
+  }
+
+}
+
+.btn-purple {
+  border-color: #fff;
+  color: #fff;
+  background-color: $color-purple;
+
+  &:hover {
+    color: #fff;
+    background-color: $color-dark-purple;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: $color-dark-purple;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: $color-dark-purple;
+  }
+}
+
+.btn-large {
+  padding: 15px 27px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.btn-oval {
+  border-radius: 50px;
+}
