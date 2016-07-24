@@ -67,12 +67,24 @@ Route::group(['prefix' => 'user'], function (){
 });
 
 /**
- *  Products routes group.
+ *  Store routes group.
  */
 Route::group(['prefix' => 'store'], function (){
 
-	Route::get('/products', function (){
+	Route::get('', function (){
 		return view('store.products');
 	})->name('store.products');
 
+	Route::get('/{category_name}', [
+		'uses' => 'CategoryController@getCategoryPage',
+		'as' => 'category.products'
+	]);
+
 });
+
+Route::get('/category_image/{filename}', [
+	'uses' => 'CategoryController@getCategoryImage',
+	'as' => 'category.image'
+]);
+
+

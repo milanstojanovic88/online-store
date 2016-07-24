@@ -60,7 +60,7 @@
             <div class="info-block info-block-bordered clearfix">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum illo in maiores officiis quo? Alias architecto error eum non tempora? Eius necessitatibus perspiciatis placeat reiciendis. Aut corporis maiores sed unde!
                 <br><br>
-                <button class="btn btn-purple btn-large btn-oval pull-right">Browse Store</button>
+                <a href="{{ route('store.products') }}" class="btn btn-purple btn-large btn-oval pull-right">Browse Store</a>
             </div>
         </div>
         <div class="col-md-6 col-sm-10">

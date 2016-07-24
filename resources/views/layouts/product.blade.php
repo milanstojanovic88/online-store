@@ -1,10 +1,16 @@
 @extends('layouts.master')
 
+@section('title')
+
+    {{ $category = ucfirst($products->first()->category->category_name) }}
+
+@endsection
+
 @section('content')
 
     <div class="row">
         <div class="col-md-6">
-            <h1>Browse Categories</h1>
+            <h1>Browse&nbsp;{{ $category }}</h1>
         </div>
         <div class="col-md-4 col-md-offset-2">
             <form action="" id="search-products-form" method="" class="form-inline" style="top: 18px; position: relative">
@@ -16,28 +22,24 @@
         </div>
     </div>
     <div class="row">
-        <div class="product-categories">
-            @foreach(DB::table('categories')->get() as $category)
-
-                <div class="col-sm-6 col-md-6">
+        @foreach($products as $product)
+            <div class="category-products">
+                <div class="col-sm-6 col-md-3">
                     <div class="thumbnail clearfix">
-                        <img src="{{ route('category.image', [
-                            'filename' => strtolower($category->category_name . '_category.png')
-                        ]) }}" alt="..." class="img-responsive">
+                        <img src="{{ $product->image_path }}" alt="...">
                         <div class="caption">
-                            <h3>{{ $category->category_name }}</h3>
-                            <p>{{ $category->description }}</p>
+                            <h3>{{ $product->name }}</h3>
+                            <a href="{{ route('category.products', ['category_name' => $category]) }}"><h4>{{ $category }}</h4></a><br>
+                            <p>{{ $product->description }}</p>
                             <div>
-                                <a href="{{ route('category.products', [
-                                    'category_name' => strtolower($category->category_name)
-                                ]) }}" class="btn btn-primary btn-lg btn-oval pull-right" role="button">Browse {{ $category->category_name }}</a>
+                                <p class="pull-left"><strong>Price:</strong> &euro; {{ $product->price }}</p>
+                                <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            @endforeach
-        </div>
+            </div>
+        @endforeach
     </div>
 
 @endsection
