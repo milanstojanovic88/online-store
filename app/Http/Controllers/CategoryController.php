@@ -25,7 +25,7 @@ class CategoryController extends Controller
     		'category_id',
 		    '=',
 		    Category::where('category_name', '=', $category_name)->first()->id
-	    )->get();
+	    )->paginate(16);
 
         return view('store.' . $category_name)->with('products', $products);
     }

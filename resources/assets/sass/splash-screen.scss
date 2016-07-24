@@ -11,6 +11,8 @@
   bottom: 0;
   background-color: $color-purple;
   z-index: 100000;
+
+  @include prefix(transition, none, webkit moz ms o);
 }
 
 .splash-screen-content {

@@ -50,7 +50,7 @@ var checkElement = function (ele) {
 $(document).ready(function () {
 
     $('.continue-to-store button').click(function (event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         $('.splash-screen').animate({
             width: '120%'

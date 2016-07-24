@@ -1,9 +1,9 @@
 @extends('layouts.product')
 
 @section('favicon')
-    <link rel="icon" href="{{ URL::to('favicon-gamepad.ico') }}">
+    <link rel="icon" href="{{ URL::to('favicon-book.ico') }}">
 @endsection
 
 @section('category-title')
-    Movies
+    Books
 @endsection

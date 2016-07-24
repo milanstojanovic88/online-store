@@ -12,54 +12,19 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        $product = new Product([
-	        'name' => 'Fast and Furious',
-	        'description' => 'Movie description...',
-	        'price' => 20.00,
-	        'image_path' => 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRRl8bHiO1v8nLyAKfHXEr8cE1nho_EfvLbZ6ELG1q6SJgrniWq',
-	        'category_id' => '1'
-        ]);
 
-	    $product->save();
+    	for( $i = 0; $i < 20; $i++) {
+		    $product = new Product([
+			    'name' => 'Sample movie Number ' . (string)($i+1),
+			    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequatur cum distinctio, dolorum eum eveniet nobis non, nostrum odio odit omnis similique sit soluta suscipit, ullam voluptas. Repellendus, temporibus!',
+			    'price' => 12.50,
+			    'image_path' => 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRRl8bHiO1v8nLyAKfHXEr8cE1nho_EfvLbZ6ELG1q6SJgrniWq',
+			    'category_id' => '1'
+		    ]);
 
-	    $product = new Product([
-		    'name' => 'Star Trek',
-		    'description' => 'Movie description...',
-		    'price' => 18.99,
-		    'image_path' => 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRRl8bHiO1v8nLyAKfHXEr8cE1nho_EfvLbZ6ELG1q6SJgrniWq',
-		    'category_id' => '1'
-	    ]);
+		    $product->save();
+	    }
 
-	    $product->save();
 
-	    $product = new Product([
-		    'name' => 'World of Warcraft',
-		    'description' => 'Game description...',
-		    'price' => 44.55,
-		    'image_path' => 'http://letiarts.com/letiarts2014/wp-content/uploads/2014/04/icon_game.png',
-		    'category_id' => '2'
-	    ]);
-
-	    $product->save();
-
-	    $product = new Product([
-		    'name' => 'Mass Effect 3',
-		    'description' => 'Game description...',
-		    'price' => 44.55,
-		    'image_path' => 'http://letiarts.com/letiarts2014/wp-content/uploads/2014/04/icon_game.png',
-		    'category_id' => '2'
-	    ]);
-
-	    $product->save();
-
-	    $product = new Product([
-		    'name' => 'Counter-Strike: GO',
-		    'description' => 'Game description...',
-		    'price' => 24.99,
-		    'image_path' => 'http://letiarts.com/letiarts2014/wp-content/uploads/2014/04/icon_game.png',
-		    'category_id' => '2'
-	    ]);
-
-	    $product->save();
     }
 }

@@ -14,8 +14,22 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ route('store.products') }}">All categories</a></li>
+						<li role="separator" class="divider"></li>
+						@foreach(DB::table('categories')->get() as $category)
+							<li>
+								<a href="{{ route('category.products', [
+									'category_name' => $category->category_name
+								])}}">
+									{{ ucfirst($category->category_name) }}
+								</a>
+							</li>
+						@endforeach
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if(!Auth::check())

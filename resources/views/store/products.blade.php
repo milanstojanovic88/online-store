@@ -7,10 +7,12 @@
             <h1>Browse Categories</h1>
         </div>
         <div class="col-md-4 col-md-offset-2">
-            <form action="" id="search-products-form" method="" class="form-inline" style="top: 18px; position: relative">
+            <form action="{{ route('store.search') }}" id="search-products-form" method="get" class="form-inline" style="top: 18px; position: relative">
+
                 <div class="form-group">
                     <input class="form-control input-lg" type="text" name="search-products" id="search-products" placeholder="Search products...">
                 </div>
+                <input type="hidden" name="category-field" value="">
                 <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>

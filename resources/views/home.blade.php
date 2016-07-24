@@ -10,7 +10,7 @@
 
 @section('splash-screen')
 
-    <div class="splash-screen" style="display: none"> {{-- don't forget to remove display attribute --}}
+    <div class="splash-screen"> {{-- don't forget to remove display attribute --}}
         <div class="splash-screen-content">
             <div class="container">
                 <div class="row">

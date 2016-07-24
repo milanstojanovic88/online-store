@@ -80,6 +80,11 @@ Route::group(['prefix' => 'store'], function (){
 		'as' => 'category.products'
 	]);
 
+	Route::get('/product/{product_name}', [
+		'uses' => 'ProductsController@getSingleProduct',
+		'as' => 'single.product'
+	]);
+
 });
 
 Route::get('/category_image/{filename}', [
@@ -88,3 +93,12 @@ Route::get('/category_image/{filename}', [
 ]);
 
 
+Route::get('/search', [
+	'uses' => 'ProductsController@getSearch',
+	'as' => 'store.search'
+]);
+
+Route::post('/search', [
+	'uses' => 'ProductsController@postSearch',
+	'as' => 'store.search'
+]);
