@@ -39,4 +39,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+	    'client_id' => env('FB_CLIENT_ID'),
+	    'client_secret' => env('FB_CLIENT_SECRET'),
+	    'redirect' => env('FB_CALLBACK_ROUTE'),
+    ],
+
+    'twitter' => [
+	    'client_id' => env('TWITTER_CLIENT_ID'),
+	    'client_secret' => env('TWITTER_CLIENT_SECRET'),
+	    'redirect' => env('TWITTER_CALLBACK_ROUTE'),
+    ],
 ];

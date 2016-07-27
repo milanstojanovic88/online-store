@@ -32,7 +32,7 @@
             <div class="profile-image-upload settings-block clearfix">
                 <h3>Change your profile picture</h3><br>
                 <img src="{{ route('user.avatar', ['filename' => $user->avatar]) }}" alt="user_avatar" class="img-responsive img-circle pull-left" style="width: 150px; height: 150px;">
-                <h3>{{ $user->first_name }}&nbsp;{{ $user->last_name }}'s profile</h3>
+                <h3>{{ $user->name }}&nbsp;{{ $user->last_name }}'s profile</h3>
                 <form method="post" action="{{ route('user.image-upload') }}" enctype="multipart/form-data">
                     <label for="avatar" class="btn btn-default file-upload-control">
                         Choose file&nbsp;&nbsp;<i class="fa fa-upload" aria-hidden="true"></i>
@@ -71,13 +71,10 @@
                     <h4>Change your profile data</h4><br>
                     <form action="{{ route('user.change-data') }}" method="post">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="&#xf003;&nbsp;&nbsp;{{ $user->email }}" name="email">
+                            <input type="email" class="form-control" placeholder="&#xf003;&nbsp;&nbsp;Email:&nbsp;{{ $user->email }}" name="email">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="&#xf007;&nbsp;&nbsp;First name:&nbsp;{{ $user->first_name }}" name="first_name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="&#xf007;&nbsp;&nbsp;Last name:&nbsp;{{ $user->last_name }}" name="last_name">
+                            <input type="text" class="form-control" placeholder="&#xf007;&nbsp;&nbsp;Name:&nbsp;{{ $user->name }}" name="name">
                         </div>
                         {{ csrf_field() }}
                         <button class="btn btn-primary" type="submit">Change data&nbsp;&nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></button>

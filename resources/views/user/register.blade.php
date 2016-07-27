@@ -36,12 +36,23 @@
                     <input type="password" class="form-control form-control-half pull-right" name="password_confirmation" id="password_confirmation" required placeholder="&#xf084;&nbsp;&nbsp;Password confirmation*:&nbsp;" value="{{ old('password_confirmation') }}">
                 </div>
                 <div class="form-group clearfix">
-                    <input type="text" class="form-control form-control-half pull-left" name="first_name" id="first_name" placeholder="&#xf007;&nbsp;&nbsp;First name:&nbsp;" value="{{ old('first_name') }}">
-                    <input type="text" class="form-control form-control-half pull-right" name="last_name" id="last_name" placeholder="&#xf007;&nbsp;&nbsp;Last name:&nbsp;" value="{{ old('last_name') }}">
+                    <input type="text" class="form-control form-control-half pull-left" name="name" id="name" placeholder="&#xf007;&nbsp;&nbsp;Name:&nbsp;" value="{{ old('name') }}">
                 </div>
                 <button class="btn btn-primary" type="submit">Register&nbsp;<i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="btn btn-default" type="reset">Reset&nbsp;<i class="fa fa-times" aria-hidden="true"></i></button>
             </form>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+            <h5 style="text-align: center">Login with Social Network account.</h5>
+            <hr>
+            <a href="{{ route('auth.facebook-redirect') }}" class="btn btn-primary btn-facebook">
+                Facebook
+            </a>
+            <a href="{{ route('auth.twitter-redirect') }}" class="btn btn-primary btn-twitter pull-right">
+                Twitter
+            </a>
         </div>
     </div>
 

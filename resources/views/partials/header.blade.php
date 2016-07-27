@@ -46,7 +46,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle clearfix" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img src="{{ route('user.avatar', ['filename' => Auth::user()->avatar]) }}" alt="user_avatar" class="img-responsive img-circle pull-left">&nbsp;
-							<span class="header-username">{{ Auth::user()->first_name }}&nbsp;{{ Auth::user()->last_name }}</span>
+							<span class="header-username">{{ Auth::user()->name }}</span>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">

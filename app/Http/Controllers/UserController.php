@@ -16,11 +16,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 *
+	 * User login view
+	 */
 	public function getLogin()
 	{
 		return view('user.login');
     }
 
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User login handler
+	 */
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
@@ -38,24 +52,41 @@ class UserController extends Controller
 		return redirect()->back()->with('error-message', 'Incorrect username and/or password!');
     }
 
+	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User logout handler
+	 */
 	public function getLogout()
 	{
 		Auth::logout();
 		return redirect()->route('user.login');
     }
 
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 *
+	 * User register view
+	 */
 	public function getRegister()
 	{
 		return view('user.register');
     }
 
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User register handler
+	 */
 	public function postRegister(Request $request)
 	{
 		$this->validate($request, [
 			'email' => 'email|required|confirmed|unique:users',
 			'password' => 'required|confirmed|min:6',
-			'first_name' => 'alpha',
-			'last_name' => 'alpha'
+			'name' => 'alpha',
+			'' => 'alpha'
 		]);
 
 		$confirmation_code = str_random(30);
@@ -64,8 +95,8 @@ class UserController extends Controller
 			'email' => $request['email'],
 			'password' => bcrypt($request['password']),
 			'confirmation_code' => $confirmation_code,
-			'first_name' => $request['first_name'],
-			'last_name' => $request['last_name']
+			'name' => $request['name'],
+			'' => $request['']
 		]);
 
 		Mail::send('email.verify', ['user' => $user, 'confirmation_code' => $confirmation_code], function($message) use ($user) {
@@ -75,10 +106,17 @@ class UserController extends Controller
 		        ->subject('Verify your email address');
 		});
 
-		return redirect()->route('home')
+		return redirect()->route('store.products')
 			->with('success-message', 'Thanks for signing up! Please check your email.');
     }
-    
+
+	/**
+	 * @param $confirmation_code
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User account verification handler
+	 */
     public function getVerify($confirmation_code)
     {
         if(!$confirmation_code) {
@@ -87,8 +125,6 @@ class UserController extends Controller
 
         $user = new User();
 	    $user = $user->where(['confirmation_Code' => $confirmation_code])->first();
-
-//        $user = User::where(['confirmation_code' => $confirmation_code])->first();
 
 	    if(!$user) {
 		    return redirect()->route('home');
@@ -101,14 +137,26 @@ class UserController extends Controller
 	    return redirect()->route('user.login')
 		    ->with('success-message', 'You have successfully verified your account.');
     }
-	
+
+	/**
+	 * @return $this
+	 *
+	 * User settings view
+	 */
     public function getUserSettings()
     {
     	$user = Auth::user();
 
         return view('user.settings')->with('user', $user);
     }
-    
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User image upload handler
+	 */
     public function postUserImageUpload(Request $request)
     {
         if(Auth::check()) {
@@ -130,7 +178,14 @@ class UserController extends Controller
 
         return redirect()->back()->with('error-message', 'Image could not be uploaded :( <br> Please Try again later.');
     }
-    
+
+	/**
+	 * @param $filename
+	 *
+	 * @return Response
+	 *
+	 * User avatar getter
+	 */
     public function getUserAvatar($filename)
     {
         $avatar = Storage::disk('avatars')->get($filename);
@@ -138,6 +193,14 @@ class UserController extends Controller
 	    return new Response($avatar, 200);
     }
 
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User password change handler
+	 */
     public function postChangePassword(Request $request)
     {
         $this->validate($request, [
@@ -157,22 +220,25 @@ class UserController extends Controller
 	    return redirect()->back()->with('error-message', 'Incorrect Old password!');
     }
 
+
+	/**
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 *
+	 * User data change handler
+	 */
     public function postChangeData(Request $request)
     {
         $this->validate($request, [
         	'email' => 'email|unique:users',
-	        'first_name' => 'alpha',
-	        'last_name' => 'alpha'
+	        'name' => 'alpha'
         ]);
 
 	    $user = Auth::user();
 
-	    if(!empty($request['first_name']) and isset($request['first_name'])) {
-	    	$user->first_name = $request['first_name'];
-	    }
-
-	    if(!empty($request['last_name']) and isset($request['last_name'])) {
-		    $user->last_name = $request['last_name'];
+	    if(!empty($request['name']) and isset($request['name'])) {
+	    	$user->name = $request['name'];
 	    }
 
 	    if(!empty($request['email']) and isset($request['email'])) {

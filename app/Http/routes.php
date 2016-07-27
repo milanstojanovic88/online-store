@@ -149,3 +149,27 @@ Route::post('/search', [
 	'uses' => 'ProductsController@postSearch',
 	'as' => 'store.search'
 ]);
+
+Route::get('/facebook/redirect', [
+	'uses' => 'SocialAuthController@getFacebookRedirect',
+	'as' => 'auth.facebook-redirect',
+	'middleware' => 'guest'
+]);
+
+Route::get('/facebook/callback', [
+	'uses' => 'SocialAuthController@getFacebookCallback',
+	'as' => 'auth.facebook-callback',
+	'middleware' => 'guest'
+]);
+
+Route::get('/twitter/redirect', [
+	'uses' => 'SocialAuthController@getTwitterRedirect',
+	'as' => 'auth.twitter-redirect',
+	'middleware' => 'guest'
+]);
+
+Route::get('/twitter/callback', [
+	'uses' => 'SocialAuthController@getTwitterCallback',
+	'as' => 'auth.twitter-callback',
+	'middleware' => 'guest'
+]);

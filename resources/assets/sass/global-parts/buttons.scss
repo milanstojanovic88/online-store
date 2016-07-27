@@ -45,3 +45,24 @@
 .btn-oval {
   border-radius: 50px;
 }
+
+.btn-facebook {
+  background-color: $color-facebook;
+  width: 49%;
+  color: #fff;
+  border: $color-facebook;
+  &:hover, &:focus {
+    background-color: #2C4578;
+  }
+}
+
+.btn-twitter {
+  background-color: $color-twitter;
+  width: 49%;
+  color: #fff;
+  border: $color-twitter;
+
+  &:hover, &:focus {
+    background-color: #1475E3;
+  }
+}

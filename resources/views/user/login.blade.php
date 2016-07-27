@@ -47,5 +47,18 @@
             <a href="{{ route('user.register') }}" class="pull-right">Register new user.</a>
         </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+            <h5 style="text-align: center">Login with Social Network account.</h5>
+            <hr>
+            <a href="{{ route('auth.facebook-redirect') }}" class="btn btn-primary btn-facebook">
+                Facebook
+            </a>
+            <a href="{{ route('auth.twitter-redirect') }}" class="btn btn-primary btn-twitter pull-right">
+                Twitter
+            </a>
+        </div>
+    </div>
 
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @if(Session::has('cart'))
+    @if(Session::has('cart_' . md5(Auth::user()->id)))
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <ul class="list-group">

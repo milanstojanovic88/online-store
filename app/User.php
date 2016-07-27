@@ -13,7 +13,6 @@ class User extends Model implements Authenticatable
 		'email',
 		'password',
 		'confirmation_code',
-		'last_name',
-		'first_name'
+		'name'
 	];
 }
