@@ -31,6 +31,26 @@ Route::group(['prefix' => 'user'], function (){
 			'as' => 'user.logout'
 		]);
 
+		Route::get('/settings', [
+			'uses' => 'UserController@getUserSettings',
+			'as' => 'user.settings'
+		]);
+
+		Route::post('/image-upload', [
+			'uses' => 'UserController@postUserImageUpload',
+			'as' => 'user.image-upload'
+		]);
+
+		Route::post('/change-password', [
+			'uses' => 'UserController@postChangePassword',
+			'as' => 'user.change-password'
+		]);
+
+		Route::post('/change-data', [
+			'uses' => 'UserController@postChangeData',
+			'as' => 'user.change-data'
+		]);
+
 	});
 
 	/**
@@ -75,7 +95,7 @@ Route::group(['prefix' => 'store'], function (){
 		return view('store.products');
 	})->name('store.products');
 
-	Route::get('/{category_name}', [
+	Route::get('/category/{category_name}', [
 		'uses' => 'CategoryController@getCategoryPage',
 		'as' => 'category.products'
 	]);
@@ -85,13 +105,40 @@ Route::group(['prefix' => 'store'], function (){
 		'as' => 'single.product'
 	]);
 
+	Route::get('/shopping-cart', [
+		'uses' => 'ProductsController@getCart',
+		'as' => 'product.shoppingCart',
+		'middleware' => 'auth'
+	]);
+
+	Route::get('/checkout', [
+		'uses' => 'ProductsController@getCheckout',
+		'as' => 'checkout',
+		'middleware' => 'auth'
+	]);
+
 });
+
+Route::get('/add-to-cart/{id}', [
+	'uses' => 'ProductsController@getAddToCart',
+	'as' => 'product.addToCart'
+]);
+
+Route::get('/remove-from-cart/{id}', [
+	'uses' => 'ProductsController@getRemoveFromCart',
+	'as' => 'product.removeFromCart'
+]);
 
 Route::get('/category_image/{filename}', [
 	'uses' => 'CategoryController@getCategoryImage',
 	'as' => 'category.image'
 ]);
 
+Route::get('/user_avatar/{filename}', [
+	'uses' => 'UserController@getUserAvatar',
+	'as' => 'user.avatar',
+	'middleware' => 'auth'
+]);
 
 Route::get('/search', [
 	'uses' => 'ProductsController@getSearch',

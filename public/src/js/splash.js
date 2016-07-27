@@ -32,12 +32,13 @@ var checkElement = function (ele) {
                 duration: 1,
                 complete: function () {
                     if(progressBar.style.width == '100%' && document.readyState == 'complete') {
-                        setTimeout(function () {
+                        // setTimeout(function () {
                             $('.progress').fadeOut(400, function () {
                                 $('.continue-to-store').fadeIn(400);
                             });
-                        }, 1000);
+                        // }, 1000);
                     }
+
                 }
             });
         }

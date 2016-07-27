@@ -13,7 +13,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
 
-    	for( $i = 0; $i < 20; $i++) {
+    	for( $i = 0; $i < 100; $i++) {
 		    $product = new Product([
 			    'name' => 'Sample movie Number ' . (string)($i+1),
 			    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequatur cum distinctio, dolorum eum eveniet nobis non, nostrum odio odit omnis similique sit soluta suscipit, ullam voluptas. Repellendus, temporibus!',

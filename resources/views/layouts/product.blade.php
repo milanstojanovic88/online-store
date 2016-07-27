@@ -54,7 +54,7 @@
                                 <p>{{ substr($product->description, 0, 50) }}...&nbsp;<a href="{{ route('single.product', ['product_name' => $product->name]) }}">read more</a></p>
                                 <div>
                                     <p class="pull-left"><strong>Price:</strong> &euro; {{ $product->price }}</p>
-                                    <a href="#" class="btn btn-success pull-right" role="button">Add to Cart</a>
+                                    <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right" role="button">Add to Cart</a>
                                 </div>
                             </div>
                         </div>

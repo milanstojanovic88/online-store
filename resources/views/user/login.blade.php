@@ -1,8 +1,12 @@
 @extends('layouts.master')
 
+@section('stylesheets')
+    <link rel="stylesheet" href="{{ URL::to('/src/css/font-awesome-input.css') }}">
+@endsection
+
 @section('content')
     <div class="row">
-        <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+        <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 clearfix">
             <h1>Log In</h1><br>
             @if(count($errors))
                 <div class="alert alert-danger">
@@ -24,20 +28,23 @@
             <form action="{{ route('user.login') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" class="form-control" required name="email" id="email">
+                    <input type="email" class="form-control" placeholder="&#xf003;&nbsp;&nbsp;E-mail:&nbsp;" name="email" value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" required name="password" id="password">
+                    <input type="password" class="form-control" placeholder="&#xf084;&nbsp;&nbsp;Password:&nbsp;" name="password">
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="remember_me" id="remember_me"> Remember me
                     </label>
+                    <a href="#" class="pull-right">Forgot your password?</a>
                 </div>
-                <button class="btn btn-primary" type="submit" name="">Log In</button>
+
+
+                <button class="btn btn-primary" type="submit" name="">Log In&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></button>
             </form>
+            <br>
+            <a href="{{ route('user.register') }}" class="pull-right">Register new user.</a>
         </div>
     </div>
 

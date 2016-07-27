@@ -4,9 +4,9 @@
 @import 'variables/global-variables';
 @import 'fonts/fonts';
 
-* {
-  @include prefix(transition, all 0.5s ease-in-out, webkit moz ms o);
-}
+//* {
+//  @include prefix(transition, all 0.5s ease-in-out, webkit moz ms o);
+//}
 
 body {
   font-family: Sansation-Regular;
@@ -15,8 +15,10 @@ body {
 @import 'global-parts/buttons';
 @import 'global-parts/navbars';
 @import 'global-parts/boxes';
+@import "global-parts/forms";
 
 @import 'pages/home-page';
 @import 'pages/products-page';
 @import 'pages/search-page';
+@import "pages/user-settings";
 

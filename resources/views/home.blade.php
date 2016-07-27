@@ -9,7 +9,6 @@
 @endsection
 
 @section('splash-screen')
-
     <div class="splash-screen"> {{-- don't forget to remove display attribute --}}
         <div class="splash-screen-content">
             <div class="container">
@@ -77,7 +76,5 @@
 @endsection
 
 @section('scripts')
-
     <script src="{{ URL::to('src/js/splash.js') }}"></script>
-
 @endsection

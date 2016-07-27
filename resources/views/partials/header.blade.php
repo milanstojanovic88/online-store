@@ -33,9 +33,27 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if(!Auth::check())
-					<li><a href="{{ route('user.login') }}">Login</a></li>
+					<li><a href="{{ route('user.login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a></li>
 				@else
-					<li><a href="{{ route('user.logout') }}">Logout</a></li>
+					<li>
+						<a href="{{ route('product.shoppingCart') }}">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+							Shopping Cart
+							<span class="badge">{{ Session::has('cart_' . md5(Auth::user()->id)) ? Session::get('cart_' . md5(Auth::user()->id))->totalQuantity : '' }}</span>
+						</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle clearfix" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<img src="{{ route('user.avatar', ['filename' => Auth::user()->avatar]) }}" alt="user_avatar" class="img-responsive img-circle pull-left">&nbsp;
+							<span class="header-username">{{ Auth::user()->first_name }}&nbsp;{{ Auth::user()->last_name }}</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ route('user.settings') }}"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Settings</a></li>
+							<li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a></li>
+						</ul>
+					</li>
 				@endif
 			</ul>
 		</div><!-- /.navbar-collapse -->

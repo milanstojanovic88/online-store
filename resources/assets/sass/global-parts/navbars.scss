@@ -2,4 +2,13 @@
   border-radius: 0;
   padding: 10px 0;
   font-size: 1.2em;
+
+  .dropdown {
+    img {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      top: -10px;
+    }
+  }
 }

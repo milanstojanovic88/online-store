@@ -53,6 +53,16 @@ return [
 		    'root' => storage_path('app/products')
 	    ],
 
+        'users' => [
+		    'driver' => 'local',
+		    'root' => storage_path('app/users')
+	    ],
+
+        'avatars' => [
+	        'driver' => 'local',
+	        'root' => storage_path('app/users/avatars')
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
