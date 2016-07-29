@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use PhpParser\Node\Scalar\MagicConst\File;
@@ -46,6 +47,11 @@ class UserController extends Controller
 			'email' => $request['email'],
 			'password' => $request['password']
 		], $request['remember_me'])) {
+			if(Session::has('old-url')) {
+				$oldUrl = Session::get('old-url');
+				Session::forget('old-url');
+				return redirect()->to($oldUrl);
+			}
 			return redirect()->route('store.products');
 		}
 

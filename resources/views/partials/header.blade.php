@@ -36,7 +36,7 @@
 					<li><a href="{{ route('user.login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a></li>
 				@else
 					<li>
-						<a href="{{ route('product.shoppingCart') }}">
+						<a href="{{ route('cart.shoppingCart') }}">
 							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 							Shopping Cart
 							<span class="badge">{{ Session::has('cart_' . md5(Auth::user()->id)) ? Session::get('cart_' . md5(Auth::user()->id))->totalQuantity : '' }}</span>

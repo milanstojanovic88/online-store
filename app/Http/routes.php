@@ -106,14 +106,20 @@ Route::group(['prefix' => 'store'], function (){
 	]);
 
 	Route::get('/shopping-cart', [
-		'uses' => 'ProductsController@getCart',
-		'as' => 'product.shoppingCart',
+		'uses' => 'CartController@getCart',
+		'as' => 'cart.shoppingCart',
 		'middleware' => 'auth'
 	]);
 
 	Route::get('/checkout', [
-		'uses' => 'ProductsController@getCheckout',
-		'as' => 'checkout',
+		'uses' => 'CartController@getCheckout',
+		'as' => 'cart.checkout',
+		'middleware' => 'auth'
+	]);
+
+	Route::post('/checkout', [
+		'uses' => 'CartController@postCheckout',
+		'as' => 'cart.checkout',
 		'middleware' => 'auth'
 	]);
 

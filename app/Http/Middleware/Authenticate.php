@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Authenticate
 {
@@ -22,7 +23,8 @@ class Authenticate
                 return response('Unauthorized.', 401);
             }
 
-            return redirect()->guest('user/login');
+            Session::put('old-url', $request->url());
+            return redirect()->route('user.login');
         }
 
         return $next($request);

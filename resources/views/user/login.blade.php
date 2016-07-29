@@ -53,10 +53,10 @@
             <h5 style="text-align: center">Login with Social Network account.</h5>
             <hr>
             <a href="{{ route('auth.facebook-redirect') }}" class="btn btn-primary btn-facebook">
-                Facebook
+                <i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;&nbsp;Facebook
             </a>
             <a href="{{ route('auth.twitter-redirect') }}" class="btn btn-primary btn-twitter pull-right">
-                Twitter
+                <i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;&nbsp;Twitter
             </a>
         </div>
     </div>

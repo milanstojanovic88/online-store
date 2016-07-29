@@ -1,0 +1,11 @@
+// shopping-cart-page.scss
+
+.previous-orders-block {
+  margin: 20px 0;
+  padding: 15px 10px;
+  border-bottom: 1px dashed $color-light-gray;
+
+  &:last-child {
+    border: none;
+  }
+}
