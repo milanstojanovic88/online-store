@@ -20,7 +20,7 @@ $form.submit(function (event) {
 function stripeResponseHandler(status, response) {
     if (response.error) {
         $('#charge-error').removeClass('hidden');
-        $('#charge-error').text(response.error);
+        $('#charge-error').text(response.error.message);
         $form.find('button[type="submit"]').prop('disabled', false);
     } else {
         var token = response.id;

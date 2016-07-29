@@ -26,6 +26,7 @@
                             <div class="btn-group">
                                 <a href="{{ route('product.removeFromCart', ['id' => $product['item']['id']]) }}" class="btn btn-default btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></a>
                                 <a href="{{ route('product.addToCart', ['id' => $product['item']['id']]) }}" class="btn btn-default btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                <a href="{{ route('product.deleteFromCart', ['id' => $product['item']['id']]) }}" class="btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </div>
 
                         </li>

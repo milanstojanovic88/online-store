@@ -135,6 +135,11 @@ Route::get('/remove-from-cart/{id}', [
 	'as' => 'product.removeFromCart'
 ]);
 
+Route::get('/delete-form-cart/{id}', [
+	'uses' => 'ProductsController@getDeleteFromCart',
+	'as' => 'product.deleteFromCart'
+]);
+
 Route::get('/category_image/{filename}', [
 	'uses' => 'CategoryController@getCategoryImage',
 	'as' => 'category.image'

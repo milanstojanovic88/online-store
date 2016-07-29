@@ -59,4 +59,17 @@ class ProductsController extends Controller
 
 	    return redirect()->back();
     }
+
+    public function getDeleteFromCart($id)
+    {
+	    $userHash = (Auth::check()) ? md5(Auth::user()->id) : null;
+	    $product = Product::find($id);
+	    $oldCart = Session::has('cart_' . $userHash) ? Session::get('cart_' . $userHash) : null;
+	    $cart = new Cart($oldCart);
+	    $cart->delete($product, $product->id);
+
+	    Session::put('cart_' . $userHash, $cart);
+
+	    return redirect()->back();
+    }
 }

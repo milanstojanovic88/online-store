@@ -56,6 +56,8 @@ class CartController extends Controller
 		$oldCart = Session::get('cart_' . $this->userHash);
 		$cart = new Cart($oldCart);
 
+//		Session::forget('cart_' . $this->userHash);
+
 		return view('store.shopping-cart', [
 			'products' => $cart->items,
 			'totalPrice' => $cart->totalPrice,
@@ -116,6 +118,7 @@ class CartController extends Controller
 
 			Auth::user()->orders()->save($order);
 		} catch (\Exception $e) {
+			dd('error');
 			return redirect()->route('cart.checkout')->with('error-message', $e->getMessage());
 		}
 
